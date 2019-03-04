@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
+import { ImagePicker } from "./components/image_picker";
+import { Messages } from "./components/messages";
+import { AppState } from "./types/app_state";
+import { log } from "./services/log";
+import { setSourcePath } from "./actions";
+import { InputOnChangeData } from "semantic-ui-react";
 
-class App extends Component {
-  render() {
+export const App = (props: AppState & { setSourcePath: typeof setSourcePath }) => {
+    log(props);
+    const temp = (method: (path: string) => void) =>
+        (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) =>
+            method(data.value);
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+            <ImagePicker onChange={temp(props.setSourcePath)} />
+            <Messages messages={props.messages} />
+        </div>
     );
-  }
-}
+};
 
 export default App;

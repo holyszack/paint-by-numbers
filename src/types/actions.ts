@@ -1,0 +1,15 @@
+export const Actions = {
+    "setIsBusy": "SET_IS_BUSY" as "SET_IS_BUSY",
+    "setIsNotBusy": "SET_IS_NOT_BUSY" as "SET_IS_NOT_BUSY",
+    "setPaletteSize": "SET_PALETTE_SIZE" as "SET_PALETTE_SIZE",
+    "setSourceContents": "SET_SOURCE_CONTENTS" as "SET_SOURCE_CONTENTS",
+    "setSourcePalette": "SET_SOURCE_PALETTE" as "SET_SOURCE_PALETTE",
+    "setSourcePaletteItem": "SET_SOURCE_PALETTE_ITEM" as "SET_SOURCE_PALETTE_ITEM",
+    "setSourcePath": "SET_SOURCE_PATH" as "SET_SOURCE_PATH",
+    "setSourcePreviewUrl": "SET_SOURCE_PREVIEW_URL" as "SET_SOURCE_PREVIEW_URL",
+    "setTargetContents": "SET_TARGET_CONTENTS" as "SET_TARGET_CONTENTS",
+    "setTargetPalette": "SET_TARGET_PALETTE" as "SET_TARGET_PALETTE",
+    "setTargetPaletteItem": "SET_TARGET_PALETTE_ITEM" as "SET_TARGET_PALETTE_ITEM",
+    "setTargetPreviewUrl": "SET_TARGET_PREVIEW_URL" as "SET_TARGET_PREVIEW_URL",
+    "sendMessage": "SEND_MESSAGE" as "SEND_MESSAGE",
+};
