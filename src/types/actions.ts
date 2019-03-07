@@ -3,6 +3,7 @@ export const Actions = {
     "setIsNotBusy": "SET_IS_NOT_BUSY" as "SET_IS_NOT_BUSY",
     "setPaletteSize": "SET_PALETTE_SIZE" as "SET_PALETTE_SIZE",
     "setSourceContents": "SET_SOURCE_CONTENTS" as "SET_SOURCE_CONTENTS",
+    "setSourceFile": "SET_SOURCE_FILE" as "SET_SOURCE_FILE",
     "setSourcePalette": "SET_SOURCE_PALETTE" as "SET_SOURCE_PALETTE",
     "setSourcePaletteItem": "SET_SOURCE_PALETTE_ITEM" as "SET_SOURCE_PALETTE_ITEM",
     "setSourcePath": "SET_SOURCE_PATH" as "SET_SOURCE_PATH",

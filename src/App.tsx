@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { ImagePicker } from "./components/image_picker";
 import { Messages } from "./components/messages";
 import { AppState } from "./types/app_state";
-import { log } from "./services/log";
-import { setSourcePath } from "./actions";
-import { InputOnChangeData } from "semantic-ui-react";
+// import { log } from "./services/log";
+import { Image } from "semantic-ui-react";
+import { AppActions } from "./App.connect";
+import { pipe } from "./services/pipe";
+import { getFirstFile } from "./services/get_first_file";
 
-export const App = (props: AppState & { setSourcePath: typeof setSourcePath }) => {
-    log(props);
-    const temp = (method: (path: string) => void) =>
-        (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) =>
-            method(data.value);
+export const App = ({
+    setSourceFile,
+    source,
+    target,
+    messages,
+}: AppState & AppActions) => {
     return (
         <div className="App">
-            <ImagePicker onChange={temp(props.setSourcePath)} />
-            <Messages messages={props.messages} />
+            <ImagePicker onChange={pipe(getFirstFile, setSourceFile)} />
+            <Image.Group>
+                <Image src={source.previewUrl} />
+                <Image src={target.previewUrl} />
+            </Image.Group>
+            <Messages messages={messages} />
         </div>
     );
 };

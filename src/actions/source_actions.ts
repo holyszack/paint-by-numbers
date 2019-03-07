@@ -4,6 +4,8 @@ import { Palette } from "../types/palette";
 import { RGB } from "../types/rgb";
 import { PNG } from "pngjs";
 
+export const setSourceFile = createAction(Actions.setSourceFile, resolve =>
+    (file: File) => resolve({ file }));
 export const setSourcePath = createAction(Actions.setSourcePath, resolve =>
     (path: string) => resolve({ path }));
 export const setSourcePalette = createAction(Actions.setSourcePalette, resolve =>
