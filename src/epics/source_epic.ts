@@ -1,4 +1,4 @@
-import { switchMap, tap, filter, map, mergeMap } from "rxjs/operators";
+import { switchMap, tap, filter, map } from "rxjs/operators";
 import { merge } from "rxjs";
 import { Epic } from "redux-observable";
 import { AppState } from "../types/app_state";
@@ -16,9 +16,11 @@ export const sourceEpic: Epic<Action, Action, AppState> = (actions, state) => ac
     log,
     switchMap(({ payload }) =>
         merge(
-            of(Actions.sendMessage(payload.file.name)),
-            of(Actions.setSourcePath(payload.file.name)),
-            of(Actions.setSourcePreviewUrl(URL.createObjectURL(payload.file))),
+            of(
+                Actions.sendMessage(payload.file.name),
+                Actions.setSourcePath(payload.file.name),
+                Actions.setSourcePreviewUrl(URL.createObjectURL(payload.file)),
+            ),
             readFile(payload.file).pipe(
                 switchMap(readImage),
                 map(Actions.setSourceContents),
