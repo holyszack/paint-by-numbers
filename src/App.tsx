@@ -18,7 +18,7 @@ export const App = ({
     return (
         <div className="App">
             <ImagePicker onChange={pipe(getFirstFile, setSourceFile)} />
-            <Image.Group>
+            <Image.Group size="tiny">
                 <Image src={source.previewUrl} />
                 <Image src={target.previewUrl} />
             </Image.Group>
