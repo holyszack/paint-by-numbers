@@ -1,4 +1,4 @@
-export const rgbToHsl = ([r, g, b, a]: number[]) => {
+export const rgbToHsl = ([r, g, b, ...a]: number[]) => {
     const min = Math.min(r, g, b);
     const max = Math.max(r, g, b);
     const chroma = max - min;
@@ -14,5 +14,5 @@ export const rgbToHsl = ([r, g, b, a]: number[]) => {
     const saturation = max === 0 ? 0 : 100 * chroma / max;
     const lightness = 50 * (max + min) / 255;
     const positiveHue = hue < 0 ? hue + 360 : hue;
-    return [positiveHue, saturation, lightness, a];
+    return [positiveHue, saturation, lightness, ...a];
 };

@@ -12,7 +12,7 @@ const tests = [
 describe("pixelize", () => {
     tests.forEach(({ value, expected }) => {
         it(`${value} should equal ${expected}`, () => {
-            expect(value.reduce(pixelize, [])).toEqual(expected);
+            expect(value.reduce(pixelize(), [])).toEqual(expected);
         });
     });
 });

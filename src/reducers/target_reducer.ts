@@ -9,7 +9,7 @@ export const targetReducer = (state: Image = initialImage, action: Action): Imag
         case getType(setTargetPreviewUrl):
             return { ...state, previewUrl: action.payload.url };
         case getType(setTargetContents):
-            return { ...state, contents: action.payload.png };
+            return { ...state, contents: action.payload };
         case getType(setTargetPalette):
             return { ...state, palette: action.payload.palette };
         case getType(setTargetPaletteItem):

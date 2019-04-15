@@ -1,6 +1,7 @@
 export {
     setSourceContents,
     setSourceFile,
+    setSourceHistogram,
     setSourcePalette,
     setSourcePaletteItem,
     setSourcePath,

@@ -11,4 +11,4 @@ export const setTargetPreviewUrl = createAction(Actions.setTargetPreviewUrl, res
 export const setTargetPaletteItem = createAction(Actions.setTargetPaletteItem, resolve =>
     (index: number, item: RGB) => resolve({ index, item }));
 export const setTargetContents = createAction(Actions.setTargetContents, resolve =>
-    (png: PNG) => resolve({ png }));
+    ({ data, height, width }: PNG) => resolve({ data, height, width }));

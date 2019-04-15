@@ -15,4 +15,6 @@ export const setSourcePreviewUrl = createAction(Actions.setSourcePreviewUrl, res
 export const setSourcePaletteItem = createAction(Actions.setSourcePaletteItem, resolve =>
     (index: number, item: RGB) => resolve({ index, item }));
 export const setSourceContents = createAction(Actions.setSourceContents, resolve =>
-    (png: PNG) => resolve({ png }));
+    ({data, height, width}: PNG) => resolve({ data, height, width }));
+export const setSourceHistogram = createAction(Actions.setSourceHistogram, resolve =>
+        (histogram: Map<string, number>) => resolve({ histogram }));
