@@ -6,6 +6,7 @@ export {
     setSourcePaletteItem,
     setSourcePath,
     setSourcePreviewUrl,
+    setSourceProgress,
 } from "./source_actions";
 export {
     setTargetContents,

@@ -11,4 +11,5 @@ export type Image = {
     "palette": Palette,
     "path": string,
     "previewUrl"?: string,
+    "progress"?: number,
 };

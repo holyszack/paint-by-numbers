@@ -4,33 +4,50 @@ import { pointSort } from "./point_sort";
 import { WeightedRGB } from "../types/weighted_rgb";
 import { Palette } from "../types/palette";
 import { weightedAveragePixel } from "./weighted_average_pixel";
+import { Observable } from "rxjs";
+import { RGB } from "../types/rgb";
 
-export const weightedKMeans = (partitions: number) => (population: WeightedRGB[]) => {
+export type WeightedKMeans = {
+    "progress": number;
+    "partitions": number;
+    "complete": boolean;
+    "palette"?: RGB[];
+}
 
-    let palette = generateRandomPoints({ "numberOfPoints": partitions })
-        .sort(pointSort);
-    let targets: Palette = [];
-    const { log } = console;
-    for (let i = 0; i < 10; i++) {
-        // do {
-        targets = palette;
-        palette = population
-            .reduce(
-                (acc, point) => {
-                    acc[findClosestPixelId(targets)(point.value)].push(point);
-                    return acc;
-                },
-                Array(partitions).fill(0).map(() => []) as WeightedRGB[][]
-            )
-            .map(weightedAveragePixel)
-            .sort(pointSort);
-        log(`%c PALETTE: ${i}`, `font-size: 30px`);
-        palette.forEach((pixel) => {
-            log(`%c ${pixel}`, `color:hsl(${pixel[0]}, ${pixel[1]}%, ${pixel[2]}%)`);
-        });
-    }
-    // } while (targets.toString() !== palette.toString());
-    
-    return palette;
-};
+export function weightedKMeans(partitions: number) {
+    return (population: WeightedRGB[]) => new Observable<WeightedKMeans>((subscriber) => {
+        try {
+            subscriber.next({ progress: 0, partitions, complete: false });
+            let palette = generateRandomPoints({ "numberOfPoints": partitions })
+                .sort(pointSort);
+            let targets: Palette = [];
+            const kMeanCycle = () => {
+                targets = palette;
+                palette = population
+                    .reduce(
+                        (acc, point) => {
+                            acc[findClosestPixelId(targets)(point.value)].push(point);
+                            return acc;
+                        },
+                        Array(partitions).fill(0).map(() => []) as WeightedRGB[][]
+                    )
+                    .map(weightedAveragePixel)
+                    .sort(pointSort);
+
+                const progress = targets.filter((target, index) => target.toString() === palette[index].toString()).length;
+                subscriber.next({ progress, partitions, complete: false });
+                if (progress === partitions) {
+                    subscriber.next({ progress: partitions, partitions, complete: true, palette });
+                    subscriber.complete();
+                } else {
+                    setTimeout(kMeanCycle, 0);
+                }
+            }
+            kMeanCycle();
+        } catch (e) {
+            subscriber.error(e);
+            subscriber.complete();
+        }
+    });
+}
 export default weightedKMeans;

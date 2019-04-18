@@ -10,8 +10,10 @@ export const Actions = {
     "setSourcePaletteItem": "SET_SOURCE_PALETTE_ITEM" as "SET_SOURCE_PALETTE_ITEM",
     "setSourcePath": "SET_SOURCE_PATH" as "SET_SOURCE_PATH",
     "setSourcePreviewUrl": "SET_SOURCE_PREVIEW_URL" as "SET_SOURCE_PREVIEW_URL",
+    "setSourceProgress": "SET_SOURCE_PROGRESS" as "SET_SOURCE_PROGRESS",
     "setTargetContents": "SET_TARGET_CONTENTS" as "SET_TARGET_CONTENTS",
     "setTargetPalette": "SET_TARGET_PALETTE" as "SET_TARGET_PALETTE",
     "setTargetPaletteItem": "SET_TARGET_PALETTE_ITEM" as "SET_TARGET_PALETTE_ITEM",
     "setTargetPreviewUrl": "SET_TARGET_PREVIEW_URL" as "SET_TARGET_PREVIEW_URL",
+    "setTargetProgress": "SET_TARGET_PROGRESS" as "SET_TARGET_PROGRESS",
 };

@@ -1,11 +1,12 @@
 import * as React from "react";
+import { Segment } from "semantic-ui-react";
 
 export type ImagePickerProps = {
     "onChange": (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const ImagePicker = ({onChange}: ImagePickerProps) => (
-    <div>
+export const ImagePicker = ({ onChange }: ImagePickerProps) => (
+    <Segment>
         <input
             type="file"
             // style={{ "display": "none" }}
@@ -14,5 +15,5 @@ export const ImagePicker = ({onChange}: ImagePickerProps) => (
             onChange={onChange}
         >
         </input>
-    </div>
+    </Segment>
 );

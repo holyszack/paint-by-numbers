@@ -9,7 +9,7 @@ import { targetReducer } from "./target_reducer";
 export const rootReducer = (state: AppState = initialState, action: Action): AppState => {
     switch (action.type) {
         case getType(Actions.sendMessage):
-            return {...state, messages: state.messages.concat(action.payload.message)}
+            return { ...state, messages: state.messages.concat(action.payload.message) }
         case getType(Actions.setIsBusy):
             return { ...state, busy: true };
         case getType(Actions.setIsNotBusy):
@@ -17,7 +17,7 @@ export const rootReducer = (state: AppState = initialState, action: Action): App
         case getType(Actions.setPaletteSize):
             return { ...state, paletteSize: action.payload.size };
         default:
-            return { 
+            return {
                 ...state,
                 source: sourceReducer(state.source, action),
                 target: targetReducer(state.target, action),

@@ -19,6 +19,7 @@ import { createObjectUrl } from "../services/create_object_url";
 export function sourceEpic(actions: Observable<Action>): Observable<Action> {
     return actions.pipe(
         filter(isActionOf(setSourceFile)),
+        filter(({payload}) => Boolean(payload.file)),
         // log,
         switchMap(({ payload }) =>
             merge(

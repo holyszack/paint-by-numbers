@@ -5,4 +5,5 @@ export const initialImage: Image = {
     "palette": [],
     "path": "",
     "previewUrl": undefined,
+    "progress": undefined,
 };
