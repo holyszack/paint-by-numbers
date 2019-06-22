@@ -1,4 +1,4 @@
-import { sourceEpic } from "./source_epic";
+import { setSourceFileEpic } from "./set_source_file_epic";
 import { setSourceFile, sendMessage, setSourcePath, setSourcePreviewUrl, setSourceContents } from "../actions";
 import { from, Observable } from "rxjs";
 import { createObjectUrl } from "../services/create_object_url";
@@ -13,7 +13,7 @@ blob.name = "hey";
 jest.mock("../services/create_object_url");
 
 const { log, error } = console;
-describe("sourceEpic", () => {
+describe("setSourceFileEpic", () => {
     let png: PNG;
     const tests: Array<{
         "actions": Observable<Action>,
@@ -43,7 +43,7 @@ describe("sourceEpic", () => {
         it(title, (done) => {
             (createObjectUrl as jest.Mock).mockImplementation(() => url);
             const results: Action[] = [];
-            sourceEpic(actions).subscribe(
+            setSourceFileEpic(actions).subscribe(
                 (a) => { results.push(a); },
                 (a) => { error(a); done(); },
                 () => {

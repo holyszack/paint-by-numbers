@@ -10,7 +10,7 @@ import { pixelize } from "../services/pixelize";
 import { setSourceHistogram } from "../actions/source_actions";
 import { getHistogram } from "../services/get_histogram";
 
-export const histogramEpic: Epic<Action, Action, AppState> = (actions, state) => actions.pipe(
+export const setSourceContentsEpic: Epic<Action, Action, AppState> = (actions) => actions.pipe(
     filter(isActionOf(Actions.setSourceContents)),
     map(({ payload }) => payload.data.reduce(pixelize(), [])),
     map(getHistogram),

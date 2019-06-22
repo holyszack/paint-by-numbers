@@ -14,7 +14,7 @@ import { readFile } from "../services/read_file";
 import { readImage } from "../services/read_image";
 import { createObjectUrl } from "../services/create_object_url";
 
-export function sourceEpic(actions: Observable<Action>): Observable<Action> {
+export function setSourceFileEpic(actions: Observable<Action>): Observable<Action> {
     return actions.pipe(
         filter(isActionOf(setSourceFile)),
         filter(({ payload }) => Boolean(payload.file)),

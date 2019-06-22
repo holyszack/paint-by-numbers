@@ -1,10 +1,10 @@
 import { combineEpics } from "redux-observable";
-import { sourceEpic } from "./source_epic";
-import { histogramEpic } from "./histogram_epic";
-import { paletteEpic } from "./palette_epic";
+import { setSourceFileEpic } from "./set_source_file_epic";
+import { setSourceContentsEpic } from "./set_source_contents_epic";
+import { setSourceHistogramEpic } from "./set_source_histogram_epic";
 
 export const rootEpics = combineEpics(
-    histogramEpic,
-    paletteEpic,
-    sourceEpic,
+    setSourceContentsEpic,
+    setSourceHistogramEpic,
+    setSourceFileEpic,
 );

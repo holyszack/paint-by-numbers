@@ -9,7 +9,7 @@ import { sendMessage, setSourcePalette, setSourceProgress, setSourceHistogram, s
 import { getWeightedRgbsFromHistogram } from "../services/get_weighted_rgbs_from_histogram";
 import weightedKMeans from "../services/weighted_k_means";
 
-export const initializeTargetEpic: Epic<Action, Action, AppState> = (actions, state) => actions.pipe(
+export const setSourcePaletteEpic: Epic<Action, Action, AppState> = (actions, state) => actions.pipe(
     filter(isActionOf(setSourcePalette)),
     map(({ payload }) => payload.palette),
     switchMap((sourcePalette) => of(
