@@ -24,10 +24,6 @@ export const sourceReducer = (state: Image = initialImage, action: Action): Imag
             return action.payload.percent > (state.progress || -1)
                 ? { ...state, progress: action.payload.percent }
                 : state;
-        case getType(setSourcePaletteItem):
-            const palette = [...state.palette];
-            palette[action.payload.index] = action.payload.item;
-            return { ...state, palette };
         default:
             return state;
     }

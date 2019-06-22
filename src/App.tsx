@@ -25,9 +25,7 @@ export const App = ({
                     <ImagePreview {...source} />
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment>
-                        <ImagePreview {...target} />
-                    </Segment>
+                    <ImagePreview {...target} />
                 </Grid.Column>
             </Grid>
             <Messages messages={messages} />
