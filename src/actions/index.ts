@@ -4,7 +4,9 @@ export {
     setSourceHistogram,
     setSourcePalette,
     setSourcePaletteItem,
+    setSourcePaletteMap,
     setSourcePath,
+    setSourcePixels,
     setSourcePreviewUrl,
     setSourceProgress,
 } from "./source_actions";
