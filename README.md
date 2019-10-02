@@ -1,3 +1,9 @@
+# Paint By Numbers
+
+A project to preview what a paint-by-numbers picture would look like if you mixed what color each number matched to.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
