@@ -1,6 +1,6 @@
 import { getType } from "typesafe-actions";
 import { Action } from "../types/action";
-import { setSourcePath, setSourcePreviewUrl, setSourceHistogram, setSourceContents, setSourcePalette, setSourcePaletteItem, setSourceProgress } from "../actions";
+import { setSourcePath, setSourcePreviewUrl, setSourceHistogram, setSourceContents, setSourcePalette, setSourceProgress } from "../actions";
 import { initialImage } from "./initial_image";
 import { Image } from "../types/image";
 

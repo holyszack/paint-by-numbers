@@ -1,6 +1,6 @@
 import { getType } from "typesafe-actions";
 import { Action } from "../types/action";
-import { setTargetPreviewUrl, setTargetContents, setTargetPalette, setTargetPaletteItem } from "../actions";
+import { setTargetPreviewUrl, setTargetContents, setTargetPalette } from "../actions";
 import { initialImage } from "./initial_image";
 import { Image } from "../types/image";
 
