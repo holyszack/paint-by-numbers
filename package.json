@@ -15,7 +15,7 @@
     "rxjs": "^6.5.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.1",
-    "typesafe-actions": "^4.4.2"
+    "typesafe-actions": "^5.1.0"
   },
   "scripts": {
     "build": "react-scripts build",
