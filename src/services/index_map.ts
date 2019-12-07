@@ -1,11 +1,9 @@
-import { cachingTransformer } from "./caching_transformer";
-
 export function indexMap<T, K, I, V>({ ranker, transformer, normalizer }: {
-    "ranker": (a: T[]) => (b: I) => V,
-    "transformer": (a: T) => I,
-    "normalizer": (a: T) => K,
+    "ranker": (a: T[]) => (b: I) => V;
+    "transformer": (a: T) => I;
+    "normalizer": (a: T) => K;
 }) {
-    return ({ source, target }: { source: T[], target: T[] }) => {
+    return ({ source, target }: { source: T[]; target: T[] }) => {
         const cache = new Map<K, V>();
         const rank= ranker(target);
         source
@@ -19,7 +17,7 @@ export function indexMap<T, K, I, V>({ ranker, transformer, normalizer }: {
                     cache.set(key, value);
                     return value;
                 }
-            })
+            });
         return cache;
-    }
+    };
 }

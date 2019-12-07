@@ -7,36 +7,37 @@ import fs from "fs";
 import { fsToPng } from "../services/fs_to_png";
 import { PNG } from "pngjs";
 
-const blob = new Blob([Uint8Array.from(fs.readFileSync("./coverage/test.png"))]);
-// @ts-ignore
+const blob = new Blob([Uint8Array.from(fs.readFileSync("./coverage/test.png"))]) as Blob & { name: string };
 blob.name = "hey";
 jest.mock("../services/create_object_url");
 
-const { log, error } = console;
+const { error } = console;
 describe("setSourceFileEpic", () => {
     let png: PNG;
-    const tests: Array<{
+    const tests: {
         "actions": Observable<Action>,
         "expected": (png: PNG) => Action[],
         "title": string;
         "url": string;
-    }> = [
-            {
-                "actions": from([
-                    setSourceFile(blob as File),
-                ]),
-                "expected": (png) => [
-                    sendMessage("hey"),
-                    setSourcePath("hey"),
-                    setSourcePreviewUrl("something"),
-                    setSourceContents(png),
-                ],
-                "title": "should",
-                "url": "something",
-            },
-        ];
+    }[] = [
+        {
+            "actions": from([
+                setSourceFile(blob as File),
+            ]),
+            "expected": (png) => [
+                sendMessage("hey"),
+                setSourcePath("hey"),
+                setSourcePreviewUrl("something"),
+                setSourceContents(png),
+            ],
+            "title": "should",
+            "url": "something",
+        },
+    ];
     beforeAll(async () => {
-        png = await fsToPng({ "filename": "/Users/zholyszko/Documents/apps/holyszack/paint-by-numbers/coverage/test.png" });
+        png = await fsToPng({
+            "filename": "/Users/zholyszko/Documents/apps/holyszack/paint-by-numbers/coverage/test.png",
+        });
     });
     it("", () => expect(true).toBe(true));
     tests.forEach(({ actions, expected, title, url }) => {

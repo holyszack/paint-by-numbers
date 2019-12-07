@@ -38,7 +38,9 @@ export function weightedKMeans(partitions: number) {
                     .map(weightedAveragePixel)
                     .sort(pointSort);
 
-                const progress = targets.filter((target, index) => target.toString() === palette[index].toString()).length;
+                const progress = targets
+                    .filter((target, index) => target.toString() === palette[index].toString())
+                    .length;
                 const complete = progress === partitions;
                 subscriber.next({ progress, partitions, complete, palette, paletteMap });
                 if (complete) {
@@ -46,7 +48,7 @@ export function weightedKMeans(partitions: number) {
                 } else {
                     setTimeout(kMeanCycle, 0);
                 }
-            }
+            };
             kMeanCycle();
         } catch (e) {
             subscriber.error(e);

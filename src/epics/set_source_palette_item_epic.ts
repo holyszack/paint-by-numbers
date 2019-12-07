@@ -5,7 +5,10 @@ import { setSourcePaletteItem, setSourcePalette } from "../actions";
 import { filter, withLatestFrom, map } from "rxjs/operators";
 import { isActionOf } from "typesafe-actions";
 
-export function setSourcePaletteItemEpic(actions: Observable<Action>, states: Observable<AppState>): Observable<Action> {
+export function setSourcePaletteItemEpic(
+    actions: Observable<Action>,
+    states: Observable<AppState>,
+): Observable<Action> {
     return actions.pipe(
         filter(isActionOf(setSourcePaletteItem)),
         withLatestFrom(states),

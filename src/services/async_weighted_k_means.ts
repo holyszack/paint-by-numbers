@@ -26,7 +26,7 @@ export function asyncWeightedKMeans(partitions: number) {
             let palette = generateRandomPoints({ "numberOfPoints": partitions })
                 .sort(pointSort);
             let targets: Palette = [];
-            let populations = batchArray(batchSize)(population);
+            const populations = batchArray(batchSize)(population);
             const kMeanCycle = () => {
                 const times = stopwatch();
                 targets = palette;
@@ -45,15 +45,17 @@ export function asyncWeightedKMeans(partitions: number) {
                 times.lap();
                 Promise.all(subPalettes).then((palettes) => {
                     times.lap();
-                    const tempPalette = dotReduce<WeightedRGB[]>((a, b) => a.concat(b))(palettes)
+                    const tempPalette = dotReduce<WeightedRGB[]>((a, b) => a.concat(b))(palettes);
                     times.lap();
                     const otherPalette = tempPalette
-                        .map(weightedAveragePixel)
+                        .map(weightedAveragePixel);
                     times.lap();
                     palette = otherPalette
                         .sort(pointSort);
                     times.lap();
-                    const progress = targets.filter((target, index) => target.toString() === palette[index].toString()).length;
+                    const progress = targets
+                        .filter((target, index) => target.toString() === palette[index].toString())
+                        .length;
                     times.lap();
                     console.log(times.durations);
                     subscriber.next({ progress, partitions, complete: false });
@@ -63,9 +65,9 @@ export function asyncWeightedKMeans(partitions: number) {
                     } else {
                         setTimeout(kMeanCycle, 0);
                     }
-                })
+                });
 
-            }
+            };
             kMeanCycle();
         } catch (e) {
             subscriber.error(e);

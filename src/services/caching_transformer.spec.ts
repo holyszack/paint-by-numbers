@@ -21,7 +21,8 @@ describe("cachingTransformer [unit]", () => {
             const cache = { get, set } as any;
             const transformer = jest.fn(transform);
             const normalizer = jest.fn(normalize);
-            const results = values.map(cachingTransformer<number[], string, number[]>({ cache, normalizer, transformer }))
+            const results = values
+                .map(cachingTransformer<number[], string, number[]>({ cache, normalizer, transformer }));
             expect(results).toEqual(expected);
             expect(set).toBeCalledTimes(sets.length);
             expect(transformer).toHaveBeenCalledTimes(sets.length);
