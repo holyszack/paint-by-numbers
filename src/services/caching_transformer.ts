@@ -4,11 +4,11 @@ export function cachingTransformer<T, K, V>({
     normalizer = (a) => a,
 }: {
     "cache"?: {
-        "get": (key: K | T) => V | T | undefined,
+        "get": (key: K | T) => V | T | undefined;
         "set": (key: K | T, value: V | T) => void;
-    },
-    "transformer"?: (a: T) => V | T,
-    "normalizer"?: (a: T) => K | T,
+    };
+    "transformer"?: (a: T) => V | T;
+    "normalizer"?: (a: T) => K | T;
 }) {
     return (item: T) => {
         const key = normalizer(item);

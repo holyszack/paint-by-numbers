@@ -1,6 +1,6 @@
 import { RGB } from "./rgb";
 
 export type WeightedRGB = {
-    "value": RGB,
-    "weight": number,
+    "value": RGB;
+    "weight": number;
 };

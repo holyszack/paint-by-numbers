@@ -1,7 +1,11 @@
 module.exports = {
     parser: '@typescript-eslint/parser',  // Specifies the ESLint parser
+    plugins: [
+        "react"
+    ],
     extends: [
         'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        "plugin:react/recommended",
     ],
     settings: {
         'import/parsers': {
@@ -12,7 +16,7 @@ module.exports = {
         },
     },
     parserOptions: {
-        ecmaVersion: 2018,  // Allows for the parsing of modern ECMAScript features
+        ecmaVersion: 2019,  // Allows for the parsing of modern ECMAScript features
         sourceType: 'module',  // Allows for the use of imports
     },
     rules: {
@@ -26,5 +30,11 @@ module.exports = {
         "multiline-ternary": ["error", "always-multiline"],
         "operator-linebreak": ["error", "before"],
         "semi": ["error", "always"],
+    },
+    "settings": {
+        "react": {
+
+            "version": "detect", // React version. "detect" automatically picks the version you have installed.
+        },
     },
 };

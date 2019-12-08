@@ -4,9 +4,9 @@ import imagePlaceholder from "../images/placeholder.png";
 import { Palette } from "../types/palette";
 
 export type ImagePreviewProps = {
-    palette: Palette,
-    previewUrl?: string,
-    progress?: number,
+    palette: Palette;
+    previewUrl?: string;
+    progress?: number;
 };
 
 export function ImagePreview({ palette, previewUrl, progress }: ImagePreviewProps) {

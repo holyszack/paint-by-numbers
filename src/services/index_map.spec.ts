@@ -8,7 +8,7 @@ describe("indexMap [unit]", () => {
     it("should return map", () => {
         const image = [[0, 0, 0], [255, 255, 255], [0, 0, 0], [100, 100, 100]] as RGB[];
         const palette = [[0, 0, 0], [0, 0, 100]] as RGB[];
-        const expected = new Map([["0,0,0", 0], ["255,255,255", 1], ["100,100,100", 0]])
+        const expected = new Map([["0,0,0", 0], ["255,255,255", 1], ["100,100,100", 0]]);
         const params = {
             "ranker": findClosestPixelId,
             "transformer": rgbToHsl as any,

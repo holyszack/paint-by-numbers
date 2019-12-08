@@ -7,5 +7,5 @@ export function stopwatch() {
             durations.push(newTime - last);
             last = newTime;
         }
-    }
+    };
 };

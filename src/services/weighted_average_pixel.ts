@@ -12,6 +12,6 @@ export function weightedAveragePixel(pixels: WeightedRGB[]): RGB {
             "weight": avg.weight + weight,
         }),
         { "value": [0, 0, 0], "weight": 0 },
-    )
+    );
     return value.map((item) => Math.floor(item / (weight || 1))) as RGB;
 };

@@ -5,5 +5,5 @@ export function batchArray(batchSize: number) {
             output.push(source.slice(i, i + batchSize));
         }
         return output;
-    }
+    };
 }

@@ -16,7 +16,7 @@ const tests = [
             { "value": [100, 50, 200], "weight": 5 },
         ],
     },
-] as Array<{ "value": WeightedRGB[], "expected": RGB }>;
+] as Array<{ "value": WeightedRGB[]; "expected": RGB }>;
 // tslint:enable:max-line-length
 describe("weightedAveragePixel [unit]", () => {
     tests.forEach(({ expected, value }) => {

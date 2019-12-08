@@ -8,7 +8,7 @@ import { Segment, Grid } from "semantic-ui-react";
 import { AppActions } from "./App.connect";
 import { pipe } from "./services/pipe";
 import { getFirstFile } from "./services/get_first_file";
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import { ImagePreview } from "./components/image_preview";
 
 export const App = ({

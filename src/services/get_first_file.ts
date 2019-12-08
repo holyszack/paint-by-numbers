@@ -3,4 +3,4 @@ export const getFirstFile = <T>(event: React.ChangeEvent<HTMLInputElement>): Fil
         throw Error("No File Selected");
     }
     return event.currentTarget.files[0];
-}
+};

@@ -15,8 +15,8 @@ const { error } = console;
 describe("setSourceFileEpic", () => {
     let png: PNG;
     const tests: {
-        "actions": Observable<Action>,
-        "expected": (png: PNG) => Action[],
+        "actions": Observable<Action>;
+        "expected": (png: PNG) => Action[];
         "title": string;
         "url": string;
     }[] = [

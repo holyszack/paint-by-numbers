@@ -30,10 +30,10 @@ const tests = [
         ],
     },
 ] as Array<{
-    "checks": Array<{ "input": [number, number, number], "output": number[]}>,
-    "expected": RGB[],
-    "partitions": number,
-    "value": WeightedRGB[],
+    "checks": Array<{ "input": [number, number, number]; "output": number[]}>;
+    "expected": RGB[];
+    "partitions": number;
+    "value": WeightedRGB[];
 }>;
 
 const { error } = console;
@@ -45,7 +45,7 @@ describe("weightedKMeans [unit]", () => {
                 (a) => { results.push(a); },
                 (a) => { error(a); done(); },
                 () => {
-                    const sut = results[results.length - 1]
+                    const sut = results[results.length - 1];
                     expect(sut).toEqual({
                         complete: true,
                         palette: expected,
@@ -55,7 +55,7 @@ describe("weightedKMeans [unit]", () => {
                     });
                     checks.forEach(({ input, output }) => {
                         expect(sut.palette[sut.paletteMap(input)]).toEqual(output);
-                    })
+                    });
                     done();
                 },
             );

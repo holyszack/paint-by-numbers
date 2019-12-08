@@ -5,8 +5,8 @@ export function generateRandomPoints({
     numberOfPoints,
     genPixel = randomPointFactory,
 }: {
-    numberOfPoints: number,
-    genPixel?: () => RGB,
+    numberOfPoints: number;
+    genPixel?: () => RGB;
 }) {
     return Array(numberOfPoints).fill(0).map(() => genPixel());
 };

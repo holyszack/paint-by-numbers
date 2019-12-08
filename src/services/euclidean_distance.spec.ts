@@ -22,7 +22,7 @@ const tests = [
         "origin": [255,255,255],
         "target": [0,0,0],
     },
-] as Array<{"expected": number, "origin": RGB, "target": RGB}>;
+] as Array<{"expected": number; "origin": RGB; "target": RGB}>;
 // tslint:enable:max-line-length
 describe("euclideanDistance [unit]", () => {
     tests.forEach(({ expected, origin, target }) => {

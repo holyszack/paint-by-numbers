@@ -10,4 +10,4 @@ export const setTargetPreviewUrl = createAction(Actions.setTargetPreviewUrl, res
 export const setTargetPaletteItem = createAction(Actions.setTargetPaletteItem, resolve =>
     (index: number, item: RGB) => resolve({ index, item }));
 export const setTargetContents = createAction(Actions.setTargetContents, resolve =>
-    ({ data, height, width }: {"data": Buffer, "height": number, "width": number}) => resolve({ data, height, width }));
+    ({ data, height, width }: {"data": Buffer; "height": number; "width": number}) => resolve({ data, height, width }));

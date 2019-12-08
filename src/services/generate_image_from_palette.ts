@@ -9,7 +9,7 @@ export function generateImageFromPalette(
 ) {
     const rgbPalette = targetPalette
         .map((pixel) => hslToRgb([...pixel, 255]));
-    const pixelConverter = (color: [number, number, number]) => rgbPalette[sourcePalette.indexOf(paletteMap(color))]
+    const pixelConverter = (color: [number, number, number]) => rgbPalette[sourcePalette.indexOf(paletteMap(color))];
 
     return Buffer.from((pixels as [number, number, number][])
         .map(pixelConverter)

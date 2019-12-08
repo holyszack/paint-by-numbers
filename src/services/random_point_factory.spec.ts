@@ -38,9 +38,9 @@ const tests = [
         "third": 0.25,
     },
 ] as Array<{
-    "dimensions": [[number, number],[number, number],[number, number]],
-    "expected": RGB,
-    "first": number, "second": number, "third": number,
+    "dimensions": [[number, number],[number, number],[number, number]];
+    "expected": RGB;
+    "first": number; "second": number; "third": number;
 }>;
 
 describe("randomPointFactory", () => {

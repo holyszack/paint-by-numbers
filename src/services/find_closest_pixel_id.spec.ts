@@ -22,7 +22,7 @@ const tests = [
         "pixels": [[0, 0, 0], [233, 0, 0]],
         "target": [233, 10, 100],
     },
-] as Array<{"expectedId": number, "pixels": RGB[], "target": RGB}>;
+] as Array<{"expectedId": number; "pixels": RGB[]; "target": RGB}>;
 
 describe("findClosestPixelId", () => {
     tests.forEach(({ expectedId, pixels, target }) => {

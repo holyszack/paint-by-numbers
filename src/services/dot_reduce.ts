@@ -4,5 +4,5 @@ export function dotReduce<T>(reducer: (a: T, b: T) => T) {
             output.map((item, index) =>
                 reducer(item, input[index])
             )
-        )
+        );
 }

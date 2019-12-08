@@ -10,5 +10,5 @@ export function memoize<V extends { "toString": () => string }, T>(method: (args
             cache.set(key, output);
             return output;
         }
-    }
+    };
 }

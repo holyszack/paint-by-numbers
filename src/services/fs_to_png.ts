@@ -3,7 +3,7 @@ import * as path from "path";
 import { PNG } from "pngjs";
 
 export const fsToPng = (spec: {
-    "filename": string,
+    "filename": string;
 }) => {
     return new Promise<PNG>((resolve, reject) => {
         const { filename } = spec;

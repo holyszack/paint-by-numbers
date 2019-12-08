@@ -15,4 +15,4 @@ export const targetReducer = (state: Image = initialImage, action: Action): Imag
         default:
             return state;
     }
-}
+};

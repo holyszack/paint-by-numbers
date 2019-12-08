@@ -4,7 +4,7 @@ describe("memoize [unit]", () => {
     it("should take in a function, and return a function that passes the paramters to the first function", () => {
         const spy = jest.fn(() => 1);
         const a = [0, 1, 2];
-        const test = memoize(spy)
+        const test = memoize(spy);
         test(a);
         expect(spy).toHaveBeenCalledWith(a);
     });
