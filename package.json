@@ -35,7 +35,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/blob-stream": "^0.1.29",
+    "@types/blob-stream": "^0.1.30",
     "@types/jest": "^25.2.2",
     "@types/node": "^14.0.1",
     "@types/pngjs": "^3.4.2",
