@@ -26,10 +26,13 @@ module.exports = {
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
+        "comma-dangle": ["error", "only-multiline"],
         "max-len": ["error", { "code": 120 }],
         "multiline-ternary": ["error", "always-multiline"],
         "operator-linebreak": ["error", "before"],
+        "quotes": ["error", "double", { "allowTemplateLiterals": true }],
         "semi": ["error", "always"],
+
     },
     "settings": {
         "react": {

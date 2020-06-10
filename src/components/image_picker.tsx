@@ -1,19 +1,24 @@
 import { Paper } from "@material-ui/core";
 import * as React from "react";
+import { getFirstFile } from "../services/input/get_first_file";
 
 export type ImagePickerProps = {
-    "onChange": (event: React.ChangeEvent<HTMLInputElement>) => void;
+    "setImage": (imgage: File) => void;
 };
 
-export const ImagePicker = ({ onChange }: ImagePickerProps) => (
-    <Paper>
-        <input
-            type="file"
-            // style={{ "display": "none" }}
-            multiple={false}
-            accept="image/png"
-            onChange={onChange}
-        >
-        </input>
-    </Paper>
-);
+export const ImagePicker = ({ setImage }: ImagePickerProps) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setImage(getFirstFile(event));
+    };
+    return (
+        <Paper>
+            <input
+                type="file"
+                multiple={false}
+                accept="image/png"
+                onChange={onChange}
+            >
+            </input>
+        </Paper>
+    );
+};

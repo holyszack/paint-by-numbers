@@ -2,7 +2,7 @@ import { Observable, Subscriber } from "rxjs";
 
 export const readFile = (file: File | Blob): Observable<Buffer> => Observable.create((obs: Subscriber<Buffer>) => {
     if (!(file instanceof File) && !(file instanceof Blob)) {
-        obs.error(new Error('`blob` must be an instance of File or Blob.'));
+        obs.error(new Error("`blob` must be an instance of File or Blob."));
         return;
     }
 

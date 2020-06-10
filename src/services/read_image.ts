@@ -5,7 +5,7 @@ export const readImage = (data: string | Buffer): Observable<PNG> => Observable.
     const png = new PNG({ "filterType": -1 });
 
     if (!(typeof data === "string") && !(data instanceof Buffer)) {
-        obs.error(new Error('`data` must be an instance of string or Buffer.'));
+        obs.error(new Error("`data` must be an instance of string or Buffer."));
         return;
     }
     return png.parse(data, (err, results) => {
