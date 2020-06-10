@@ -1,36 +1,33 @@
-import React from 'react';
-import './App.css';
+import { Grid, Paper } from "@material-ui/core";
+import React, { useContext } from 'react';
+import { DisplayMessages } from "./components/display_messages";
 import { ImagePicker } from "./components/image_picker";
-import { Messages } from "./components/messages";
-import { AppState } from "./types/app_state";
-// import { log } from "./services/log";
-import { Segment, Grid } from "semantic-ui-react";
-import { AppActions } from "./App.connect";
-import { pipe } from "./services/pipe";
-import { getFirstFile } from "./services/get_first_file";
-import 'semantic-ui-css/semantic.min.css';
 import { ImagePreview } from "./components/image_preview";
+import { Messages } from "./context/messages";
+import { SourceImage } from "./context/source_image";
+import { getFirstFile } from "./services/get_first_file";
+import { pipe } from "./services/pipe";
 
-export const App = ({
-    setSourceFile,
-    source,
-    target,
-    messages,
-}: AppState & AppActions) => {
+export const App = () => {
+    const { messages } = useContext(Messages);
+    const { setSourceImage, previewUrl } = useContext(SourceImage);
+    const source = {
+        "palette": [],
+        previewUrl,
+        "progress": undefined,
+    };
     return (
-        <Segment.Group className="App">
-            <ImagePicker onChange={pipe(getFirstFile, setSourceFile)} />
-            <Grid columns={2} stackable>
-                <Grid.Column>
-                    <ImagePreview {...source} />
-                </Grid.Column>
-                <Grid.Column>
-                    <ImagePreview {...target} />
-                </Grid.Column>
+        <Paper>
+            <ImagePicker onChange={pipe(getFirstFile, setSourceImage)} />
+            <Grid container={true}>
+                <Grid item={true} xs={12} sm={6}>
+                    <ImagePreview {...source} name="source" />
+                </Grid>
+                {/* <Grid item={true} xs={12} sm={6}>
+                    <ImagePreview {...target} name="target" />
+                </Grid> */}
             </Grid>
-            <Messages messages={messages} />
-        </Segment.Group>
+            <DisplayMessages messages={messages} />
+        </Paper >
     );
 };
-
-export default App;

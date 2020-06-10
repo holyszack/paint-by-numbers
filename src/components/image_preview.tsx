@@ -1,41 +1,41 @@
-import { Segment, Progress, Image } from "semantic-ui-react";
+import { Card, LinearProgress, Paper } from "@material-ui/core";
 import * as React from "react";
 import imagePlaceholder from "../images/placeholder.png";
 import { Palette } from "../types/palette";
+import { Image } from "./image";
 
 export type ImagePreviewProps = {
+    name: string;
     palette: Palette;
     previewUrl?: string;
     progress?: number;
 };
 
-export function ImagePreview({ palette, previewUrl, progress }: ImagePreviewProps) {
+export function ImagePreview({ name, palette, previewUrl, progress }: ImagePreviewProps) {
     return (
-        <Segment>
-            <Image src={previewUrl || imagePlaceholder} fluid centered />
+        <Paper>
+            <Image alt={name} src={previewUrl || imagePlaceholder} />
             {typeof progress === "number"
-                ? <Progress percent={progress} indicating />
+                ? <LinearProgress variant="determinate" value={progress} />
                 : undefined
             }
             {palette
-                ? <Segment.Group>
+                ? <Paper>
                     {palette.map((item) => (
-                        <Segment.Group
-                            horizontal
-                            compact
+                        <Card
                             key={`source-${item}`}
                             style={{
                                 "backgroundColor": `hsl(${item[0]},${item[1]}%,${item[2]}%)`,
                                 "color": item[2] < 50 ? "white" : "black",
                             }}
                         >
-                            <Segment floated="left" compact>{item[0]}</Segment>
-                            <Segment compact>{item[1]}%</Segment>
-                            <Segment floated="right" compact>{item[2]}%</Segment>
-                        </Segment.Group>
+                            <Paper style={{ "float": "left" }}>{item[0]}</Paper>
+                            <Paper>{item[1]}%</Paper>
+                            <Paper style={{ "float": "right" }}>{item[2]}%</Paper>
+                        </Card>
                     ))}
-                </Segment.Group>
+                </Paper>
                 : undefined}
-        </Segment>
+        </Paper>
     );
 }
