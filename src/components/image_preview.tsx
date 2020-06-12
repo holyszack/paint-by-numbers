@@ -1,20 +1,20 @@
-import { Card, LinearProgress, Paper } from "@material-ui/core";
+import { Card, LinearProgress, Paper, Grid } from "@material-ui/core";
 import * as React from "react";
 import imagePlaceholder from "../images/placeholder.png";
 import { Palette } from "../types/palette";
 import { Image } from "./image";
 
 export type ImagePreviewProps = {
-    name: string;
-    palette: Palette;
+    name?: string;
+    palette?: Palette;
     previewUrl?: string;
     progress?: number;
 };
 
-export function ImagePreview({ name, palette, previewUrl, progress }: ImagePreviewProps) {
+export function ImagePreview({ name = "", palette = [], previewUrl = imagePlaceholder, progress }: ImagePreviewProps) {
     return (
         <Paper>
-            <Image alt={name} src={previewUrl || imagePlaceholder} />
+            <Image alt={name} src={previewUrl} />
             {typeof progress === "number"
                 ? <LinearProgress variant="determinate" value={progress} />
                 : undefined
@@ -29,9 +29,17 @@ export function ImagePreview({ name, palette, previewUrl, progress }: ImagePrevi
                                 "color": item[2] < 50 ? "white" : "black",
                             }}
                         >
-                            <Paper style={{ "float": "left" }}>{item[0]}</Paper>
-                            <Paper>{item[1]}%</Paper>
-                            <Paper style={{ "float": "right" }}>{item[2]}%</Paper>
+                            <Grid container={true}>
+                                <Grid item={true} xs={4}>
+                                    <Paper style={{ "float": "left" }}>{item[0]}</Paper>
+                                </Grid>
+                                <Grid item={true} xs={4}>
+                                    <Paper>{item[1]}%</Paper>
+                                </Grid>
+                                <Grid item={true} xs={4}>
+                                    <Paper style={{ "float": "right" }}>{item[2]}%</Paper>
+                                </Grid>
+                            </Grid>
                         </Card>
                     ))}
                 </Paper>

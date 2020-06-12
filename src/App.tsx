@@ -1,22 +1,29 @@
 import { Grid, Paper } from "@material-ui/core";
-import React, { useContext } from "react";
+import React from "react";
+import { message$ } from "./app/messages";
+import { sourceFilename$ } from "./app/source_filenames";
+import { setSourceFile } from "./app/source_files";
+import { sourcePallete$ } from "./app/source_palletes";
+import { sourcePreviewUrl$ } from "./app/source_preview_urls";
 import { DisplayMessages } from "./components/display_messages";
 import { ImagePicker } from "./components/image_picker";
 import { ImagePreview } from "./components/image_preview";
-import { Messages } from "./context/messages";
-import { SourceImage } from "./context/source_image";
+import { useObservable } from "./services/hooks/use_observable";
 
 export const App = () => {
-    const { messages } = useContext(Messages);
-    const { setSourceImage, previewUrl } = useContext(SourceImage);
+    const messages = useObservable(message$);
+    const previewUrl = useObservable(sourcePreviewUrl$);
+    const palette = useObservable(sourcePallete$);
     const source = {
-        "palette": [],
-        previewUrl,
+        "name": useObservable(sourceFilename$),
         "progress": undefined,
+        palette,
+        previewUrl,
     };
+
     return (
         <Paper>
-            <ImagePicker setImage={setSourceImage} />
+            <ImagePicker setImage={setSourceFile} />
             <Grid container={true}>
                 <Grid item={true} xs={12} sm={6}>
                     <ImagePreview {...source} name="source" />
