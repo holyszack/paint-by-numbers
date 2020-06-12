@@ -1,17 +1,19 @@
+import { roundValuesDown } from "./array/round_values_down";
+import { stringify } from "./array/stringify";
 import { cachingTransformer } from "./caching_transformer";
+import { pipe } from "./pipe";
 import { rgbToHsl } from "./rgb_to_hsl";
-import { arrayKeyNormalizer } from "./array_key_normalizer";
-// tslint:disable:max-line-length
+
 const tests = [
     {
         "expected": [[0, 0, 0], [0, 0, 0], [0, 0, 100]],
-        "normalize": arrayKeyNormalizer,
+        "normalize": pipe(roundValuesDown, stringify),
         "sets": [[0, 0, 0], [0, 0, 100]],
         "transform": rgbToHsl,
         "values": [[0, 0, 0], [0, 0, 0], [255, 255, 255]],
     },
 ];
-// tslint:enable:max-line-length
+
 describe("cachingTransformer [unit]", () => {
     tests.forEach(({ expected, normalize, sets, transform, values }) => {
         it(`${values} should equal ${expected}`, () => {

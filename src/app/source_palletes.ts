@@ -9,5 +9,5 @@ export const sourcePallete$ = sourceHistogram$.pipe(
             key.split(",")
                 .map((item) => parseInt(item, 10))
         ) as RGB[]),
-    tap<RGB[]>(sendMessage),
+    tap(sendMessage),
 );

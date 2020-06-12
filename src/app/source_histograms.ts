@@ -1,13 +1,9 @@
 import { sourceRgb$ } from "./source_rgbs";
 import { map } from "rxjs/operators";
+import { getHSLKeys } from "../services/get_hsl_keys";
 import { getHistogram } from "../services/get_histogram";
+import { pipe } from "../services/pipe";
 
 export const sourceHistogram$ = sourceRgb$.pipe(
-    map(getHistogram),
-    map((hsls) => hsls.reduce((histogram, pixel) => {
-        histogram.set(pixel, (histogram.get(pixel) || 0) + 1);
-        return histogram;
-    },
-        new Map<string, number>(),
-    )),
+    map(pipe(getHSLKeys, getHistogram)),
 );

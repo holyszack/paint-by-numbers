@@ -11,7 +11,7 @@ export const message$ = messageStream$.pipe(
     scan((messages, message) => messages.concat(message), [] as string[]),
 );
 
-export const sendMessage = (input: any) => {
+export const sendMessage = <T>(input: T) => {
     if (typeof input === "string") {
         setMessage(input);
     } else {
