@@ -1,6 +1,5 @@
 import { Grid, Paper } from "@material-ui/core";
 import React from "react";
-import { message$ } from "./app/messages";
 import { sourceFilename$ } from "./app/source_filenames";
 import { setSourceFile } from "./app/source_files";
 import { sourcePallete$ } from "./app/source_palletes";
@@ -11,16 +10,12 @@ import { ImagePreview } from "./components/image_preview";
 import { useObservable } from "./services/hooks/use_observable";
 
 export const App = () => {
-    const messages = useObservable(message$);
-    const previewUrl = useObservable(sourcePreviewUrl$);
-    const palette = useObservable(sourcePallete$);
     const source = {
         "name": useObservable(sourceFilename$),
+        "palette": useObservable(sourcePallete$),
+        "previewUrl": useObservable(sourcePreviewUrl$),
         "progress": undefined,
-        palette,
-        previewUrl,
     };
-
     return (
         <Paper>
             <ImagePicker setImage={setSourceFile} />
@@ -32,7 +27,7 @@ export const App = () => {
                     <ImagePreview {...target} name="target" />
                 </Grid> */}
             </Grid>
-            <DisplayMessages messages={messages} />
+            <DisplayMessages />
         </Paper >
     );
 };
