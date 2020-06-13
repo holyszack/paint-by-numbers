@@ -3,7 +3,7 @@ import * as React from "react";
 import { getFirstFile } from "../services/input/get_first_file";
 
 export type ImagePickerProps = {
-    "setImage": (imgage: File) => void;
+    "setImage": (image: File) => void;
 };
 
 export const ImagePicker = ({ setImage }: ImagePickerProps) => {
