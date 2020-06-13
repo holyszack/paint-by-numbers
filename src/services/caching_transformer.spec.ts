@@ -1,7 +1,7 @@
+import { pipe } from "rxjs";
 import { roundValuesDown } from "./array/round_values_down";
 import { stringify } from "./array/stringify";
 import { cachingTransformer } from "./caching_transformer";
-import { pipe } from "./pipe";
 import { rgbToHsl } from "./rgb_to_hsl";
 
 const tests = [
