@@ -1,7 +1,9 @@
-import { merge, Subject, from } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
-export const observableFactory = <T>(initialValue?: T) => {
-    const observable = new Subject<T>();
+export function observableFactory<T>(initialValue: T): readonly [BehaviorSubject<T>, (value: T) => void];
+export function observableFactory<T>(): readonly [BehaviorSubject<T | undefined>, (value: T) => void];
+export function observableFactory<T>(initialValue?: T) {
+    const observable = new BehaviorSubject(initialValue);
     const update = observable.next.bind(observable);
-    return [merge(observable, from([initialValue])), update] as const;
+    return [observable, update] as const;
 };
