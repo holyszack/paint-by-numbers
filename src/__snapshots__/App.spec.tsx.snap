@@ -21,11 +21,11 @@ exports[`App renders without crashing 1`] = `
       />
       <span
         class="MuiSlider-track"
-        style="left: 0%; width: 35.483870967741936%;"
+        style="left: 0%; width: 48.38709677419355%;"
       />
       <input
         type="hidden"
-        value="24"
+        value="32"
       />
       <span
         class="MuiSlider-mark MuiSlider-markActive"
@@ -143,42 +143,42 @@ exports[`App renders without crashing 1`] = `
         style="left: 35.483870967741936%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="23"
         style="left: 37.096774193548384%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="24"
         style="left: 38.70967741935484%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="25"
         style="left: 40.32258064516129%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="26"
         style="left: 41.935483870967744%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="27"
         style="left: 43.54838709677419%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="28"
         style="left: 45.16129032258065%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="29"
         style="left: 46.774193548387096%;"
       />
       <span
-        class="MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive"
         data-index="30"
         style="left: 48.38709677419355%;"
       />
@@ -347,12 +347,12 @@ exports[`App renders without crashing 1`] = `
         aria-orientation="horizontal"
         aria-valuemax="64"
         aria-valuemin="2"
-        aria-valuenow="24"
-        aria-valuetext="24"
+        aria-valuenow="32"
+        aria-valuetext="32"
         class="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-open-2 PrivateValueLabel-thumb-1"
         data-index="0"
         role="slider"
-        style="left: 35.483870967741936%;"
+        style="left: 48.38709677419355%;"
         tabindex="0"
       >
         <span
@@ -364,7 +364,7 @@ exports[`App renders without crashing 1`] = `
             <span
               class="PrivateValueLabel-label-5"
             >
-              24
+              32
             </span>
           </span>
         </span>
@@ -389,11 +389,6 @@ exports[`App renders without crashing 1`] = `
           />
         </div>
       </div>
-    </div>
-    <div
-      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
-    >
-      <ul />
     </div>
   </div>
 </div>
