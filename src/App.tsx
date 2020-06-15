@@ -1,8 +1,9 @@
 import { Grid, Paper } from "@material-ui/core";
 import React from "react";
+import { paletteGenerationProgress$ } from "./app/palette_generation_progress";
 import { sourceFilename$ } from "./app/source_filenames";
 import { setSourceFile } from "./app/source_files";
-import { sourcePalette$ } from "./app/source_palettes";
+import { setSourcePalette, sourcePalette$ } from "./app/source_palettes";
 import { sourcePreviewUrl$ } from "./app/source_preview_urls";
 import { DisplayMessages } from "./components/display_messages";
 import { ImagePicker } from "./components/image_picker";
@@ -15,7 +16,8 @@ export const App = () => {
         "name": useObservable(sourceFilename$),
         "palette": useObservable(sourcePalette$),
         "previewUrl": useObservable(sourcePreviewUrl$),
-        "progress": undefined,
+        "progress": useObservable(paletteGenerationProgress$),
+        "updatePalette": setSourcePalette,
     };
     return (
         <Paper>
