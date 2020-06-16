@@ -1,15 +1,16 @@
 
-import { switchMap, withLatestFrom, map } from "rxjs/operators";
+import { combineLatest } from "rxjs";
+import { share, switchMap } from "rxjs/operators";
 import { createUrlFromImageContents } from "../services/create_url_from_image_contents";
-import { sourceImage$ } from "./source_images";
-import { targetRgbs$ } from "./target_rgbs";
 import { log } from "../services/operators/log";
+import { sourceImage$ } from "./source_images";
+import { targetOutputBuffer$ } from "./target_output_buffer";
 
-export const targetPreviewUrl$ = targetRgbs$.pipe(
-    map((targetRgbs) => Buffer.from(targetRgbs.flat())),
-    log("targetBuffer"),
-    withLatestFrom(sourceImage$),
-    switchMap(([data, { height, width }]) =>
-        createUrlFromImageContents({ data, height, width })
-    ),
+export const targetPreviewUrl$ = combineLatest(
+    targetOutputBuffer$,
+    sourceImage$,
+).pipe(
+    switchMap(([data, { height, width }]) => createUrlFromImageContents({ data, height, width })),
+    log("targetUrl"),
+    share(),
 );

@@ -1,4 +1,5 @@
 import { merge } from "rxjs";
+import { share } from "rxjs/operators";
 import { observableFactory } from "../services/observable_factory";
 import { exists } from "../services/operators/exists";
 import { log } from "../services/operators/log";
@@ -11,4 +12,5 @@ export { setTargetPalette };
 
 export const targetPalette$ = merge(directPalette$.pipe(exists()), sourcePalette$).pipe(
     log("targetPalette"),
+    share(),
 );
