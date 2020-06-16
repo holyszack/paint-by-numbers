@@ -10,7 +10,7 @@ export const ColorPickerItem = ({
     "color": RGB;
     "onChange": (color: RGB) => void;
 }) => {
-    const numToHex = (input: number): string => input.toString(16).padStart(2, "0");
+    const numToHex = (input: number): string => Math.floor(input).toString(16).padStart(2, "0");
     const colorString = ([r, g, b]: RGB) => `#${numToHex(r)}${numToHex(g)}${numToHex(b)}`;
     const originalColor = colorString([r, g, b]);
     const [color, setColor] = useState(originalColor);

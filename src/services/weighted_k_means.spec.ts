@@ -1,6 +1,5 @@
-import { weightedKMeans, WeightedKMeans } from "./weighted_k_means";
-import { WeightedRGB } from "../types/weighted_rgb";
 import { RGB } from "../types/rgb";
+import { weightedKMeans, WeightedKMeans } from "./weighted_k_means";
 
 const tests = [
     {
@@ -10,10 +9,10 @@ const tests = [
         ],
         "expected": [[0, 0, 0], [255, 255, 255]],
         "partitions": 2,
-        "value": [
-            { "value": [0, 0, 0], "weight": 3 },
-            { "value": [255, 255, 255], "weight": 1 },
-        ],
+        "value": new Map([
+            ["0,0,0", 3],
+            ["255,255,255", 1],
+        ]),
     },
     {
         "checks": [
@@ -23,17 +22,17 @@ const tests = [
         ],
         "expected": [[25, 0, 0], [255, 255, 255]],
         "partitions": 2,
-        "value": [
-            { "value": [0, 0, 0], "weight": 3 },
-            { "value": [100, 0, 0], "weight": 1 },
-            { "value": [255, 255, 255], "weight": 3 },
-        ],
+        "value": new Map([
+            ["0,0,0", 3],
+            ["100,0,0", 1],
+            ["255,255,255", 3],
+        ]),
     },
 ] as Array<{
-    "checks": Array<{ "input": [number, number, number]; "output": number[]}>;
+    "checks": Array<{ "input": [number, number, number]; "output": number[] }>;
     "expected": RGB[];
     "partitions": number;
-    "value": WeightedRGB[];
+    "value": Map<string, number>;
 }>;
 
 const { error } = console;

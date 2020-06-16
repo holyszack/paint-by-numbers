@@ -2,14 +2,14 @@ import { pipe } from "rxjs";
 import { roundValuesDown } from "./array/round_values_down";
 import { stringify } from "./array/stringify";
 import { cachingTransformer } from "./caching_transformer";
-import { rgbToHsl } from "./rgb_to_hsl";
+import { rgbToHsv } from "./rgb_to_hsv";
 
 const tests = [
     {
         "expected": [[0, 0, 0], [0, 0, 0], [0, 0, 100]],
         "normalize": pipe(roundValuesDown, stringify),
         "sets": [[0, 0, 0], [0, 0, 100]],
-        "transform": rgbToHsl,
+        "transform": rgbToHsv,
         "values": [[0, 0, 0], [0, 0, 0], [255, 255, 255]],
     },
 ];

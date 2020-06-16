@@ -37,6 +37,17 @@ export function ImagePreview({
                     <ColorPickerItem color={value} key={`source-${value}`} onChange={handleUpdate(index)} />
                 ))}
             </Paper>}
+            {palette && <textarea
+                style={{ "height": "2000px", "width": "300px" }}
+                value={JSON.stringify(palette, null, "\t")}
+                onChange={(e) => {
+                    try {
+                        updatePalette(JSON.parse(e.currentTarget.value));
+                    } catch (err) {
+                        console.error(err);
+                    }
+                }}
+            />}
         </Paper>
     );
 }

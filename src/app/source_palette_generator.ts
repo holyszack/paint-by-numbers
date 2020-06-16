@@ -1,5 +1,6 @@
-import { combineLatest, generate, iif, of } from "rxjs";
-import { last, switchMap, tap } from "rxjs/operators";
+import { combineLatest, iif, of } from "rxjs";
+import { last, map, switchMap, tap } from "rxjs/operators";
+import { asyncWeightedKMeans } from "../services/async_weighted_k_means";
 import { RGB } from "../types/rgb";
 import { setPaletteGenerationProgress } from "./palette_generation_progress";
 import { paletteSize$ } from "./palette_size";
@@ -13,17 +14,11 @@ export const sourcePaletteGenerator$ = combineLatest(paletteSize$, sourceHistogr
                 key.split(",")
                     .map((item) => parseInt(item, 10))
             ) as RGB[]),
-        generate({
-            "initialState": Array.from({ "length": paletteSize }).map((_, index) => [index, index, index] as RGB),
-            "condition": (state) => state[0][0] < 3,
-            "iterate": (state) => {
-                state[0][0] = state[0][0] + 1;
-                return state;
-            },
-        }).pipe(
-            tap((palette) => setPaletteGenerationProgress((palette[0][0] + 1) * 30)),
+        asyncWeightedKMeans(paletteSize)(histogram).pipe(
+            tap((palette) => setPaletteGenerationProgress(100 * (palette.progress / paletteSize))),
             last(),
             tap(() => setPaletteGenerationProgress(undefined as unknown as number)),
+            map(({ palette }) => palette),
         ),
     )),
 );

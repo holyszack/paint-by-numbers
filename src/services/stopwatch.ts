@@ -1,10 +1,10 @@
-export function stopwatch() {
+export function stopwatch(name?: string) {
     let last = Date.now();
-    const durations: number[] = [];
+    const durations: string[] = [];
     return {
-        last, durations, lap: () => {
+        last, durations, lap: (title?: string) => {
             const newTime = Date.now();
-            durations.push(newTime - last);
+            durations.push(`${title} ${newTime - last}`);
             last = newTime;
         }
     };

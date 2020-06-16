@@ -1,14 +1,13 @@
 import { pipe } from "rxjs";
 import { roundValuesDown } from "./array/round_values_down";
 import { stringify } from "./array/stringify";
-import { rgbToHsl } from "./rgb_to_hsl";
+import { rgbToHsv } from "./rgb_to_hsv";
 
-export function getHSLKeys(pixels: number[][]) {
+export function getHSVKeys(pixels: number[][]) {
     return pixels
         .map(pipe(
-            rgbToHsl,
+            rgbToHsv,
             roundValuesDown,
             stringify,
         ));
 }
- 

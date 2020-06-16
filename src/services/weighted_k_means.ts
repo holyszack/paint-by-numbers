@@ -1,12 +1,14 @@
-import { findClosestPixelId } from "./find_closest_pixel_id";
-import { generateRandomPoints } from "./generate_random_points";
-import { pointSort } from "./point_sort";
-import { WeightedRGB } from "../types/weighted_rgb";
-import { Palette } from "../types/palette";
-import { weightedAveragePixel } from "./weighted_average_pixel";
 import { Observable } from "rxjs";
+import { Palette } from "../types/palette";
 import { RGB } from "../types/rgb";
+import { WeightedRGB } from "../types/weighted_rgb";
+import { closestValue } from "./closest_value";
+import { euclideanDistance } from "./euclidean_distance";
+import { generateRandomPoints } from "./generate_random_points";
+import { histogramToWeightedRgbs } from "./histogram_to_weighted_rgbs";
 import { memoize } from "./memoize";
+import { pointSort } from "./point_sort";
+import { weightedAveragePixel } from "./weighted_average_pixel";
 
 export type WeightedKMeans = {
     "progress": number;
@@ -17,25 +19,28 @@ export type WeightedKMeans = {
 }
 
 export function weightedKMeans(partitions: number) {
-    return (population: WeightedRGB[]) => new Observable<WeightedKMeans>((subscriber) => {
+    return (histogram: Map<string, number>) => new Observable<WeightedKMeans>((subscriber) => {
         try {
-
-            let palette = generateRandomPoints({ "numberOfPoints": partitions })
+            const population = histogramToWeightedRgbs(histogram);
+            let palette = generateRandomPoints({ "length": partitions })
                 .sort(pointSort);
             subscriber.next({ progress: 0, partitions, complete: false, palette, paletteMap: () => -1 });
             let targets: Palette = [];
             const kMeanCycle = () => {
                 targets = palette;
-                const paletteMap = memoize(findClosestPixelId(targets));
-                palette = population
+                const paletteMap = memoize(closestValue(targets, euclideanDistance));
+                const newPalette = population
                     .reduce(
                         (acc, point) => {
                             acc[paletteMap(point.value)].push(point);
                             return acc;
                         },
-                        Array(partitions).fill(0).map(() => []) as WeightedRGB[][]
+                        Array.from({ "length": partitions }).map(() => [] as WeightedRGB[]),
                     )
-                    .map(weightedAveragePixel)
+                    .filter((item) => item.length)
+                    .map(weightedAveragePixel);
+                palette = newPalette
+                    .concat(generateRandomPoints({ "length": partitions - newPalette.length }))
                     .sort(pointSort);
 
                 const progress = targets
@@ -56,4 +61,3 @@ export function weightedKMeans(partitions: number) {
         }
     });
 }
-export default weightedKMeans;

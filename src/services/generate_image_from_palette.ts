@@ -1,4 +1,4 @@
-import { hslToRgb } from "./hsl_to_rgb";
+import { hsvToRgb } from "./hsv_to_rgb";
 import { depixelize } from "./depixelize";
 
 export function generateImageFromPalette(
@@ -8,7 +8,7 @@ export function generateImageFromPalette(
     paletteMap: (color: [number, number, number]) => [number, number, number],
 ) {
     const rgbPalette = targetPalette
-        .map((pixel) => hslToRgb([...pixel, 255]));
+        .map((pixel) => hsvToRgb([...pixel, 255]));
     const pixelConverter = (color: [number, number, number]) => rgbPalette[sourcePalette.indexOf(paletteMap(color))];
 
     return Buffer.from((pixels as [number, number, number][])

@@ -1,13 +1,12 @@
-import { randomPointFactory } from "./random_point_factory";
 import { RGB } from "../types/rgb";
+import { randomPointFactory } from "./random_point_factory";
 
 export function generateRandomPoints({
-    numberOfPoints,
+    length,
     genPixel = randomPointFactory,
 }: {
-    numberOfPoints: number;
+    length: number;
     genPixel?: () => RGB;
 }) {
-    return Array(numberOfPoints).fill(0).map(() => genPixel());
+    return Array.from({ length }).map(() => genPixel());
 };
-export default generateRandomPoints;

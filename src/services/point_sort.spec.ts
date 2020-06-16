@@ -1,4 +1,4 @@
-import pointSort from "./point_sort";
+import { pointSort } from "./point_sort";
 import { RGB } from "../types/rgb";
 
 const tests = [

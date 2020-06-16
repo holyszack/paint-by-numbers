@@ -1,4 +1,4 @@
-import randomPointFactory from "./random_point_factory";
+import { randomPointFactory } from "./random_point_factory";
 import { RGB } from "../types/rgb";
 
 const tests = [
@@ -38,7 +38,7 @@ const tests = [
         "third": 0.25,
     },
 ] as Array<{
-    "dimensions": [[number, number],[number, number],[number, number]];
+    "dimensions": [[number, number], [number, number], [number, number]];
     "expected": RGB;
     "first": number; "second": number; "third": number;
 }>;
@@ -53,7 +53,7 @@ describe("randomPointFactory", () => {
             const mockMath = Object.create(global.Math);
             mockMath.random = random;
             global.Math = mockMath;
-            expect(randomPointFactory({dimensions})).toEqual(expected);
+            expect(randomPointFactory({ dimensions })).toEqual(expected);
         });
     });
 });

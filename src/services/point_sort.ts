@@ -5,4 +5,3 @@ export function pointSort(first: RGB, second: RGB) {
         || (first[2] - second[2])
         || (first[1] - second[1]);
 };
-export default pointSort;
