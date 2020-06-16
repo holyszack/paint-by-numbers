@@ -1,11 +1,7 @@
-import { map, switchMap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { pngToRgbArray } from "../services/png_to_rgb_array";
-import { readFile } from "../services/read_file";
-import { readImage } from "../services/read_image";
-import { sourceFile$ } from "./source_files";
+import { sourceImage$ } from "./source_images";
 
-export const sourceRgb$ = sourceFile$.pipe(
-    switchMap(readFile),
-    switchMap(readImage),
+export const sourceRgb$ = sourceImage$.pipe(
     map(pngToRgbArray),
 );
