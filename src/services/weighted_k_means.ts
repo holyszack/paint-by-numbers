@@ -23,7 +23,7 @@ export function weightedKMeans(partitions: number) {
         try {
             const population = histogramToWeightedRgbs(histogram);
             let palette = generateRandomPoints({ "length": partitions })
-                .sort(pointSort);
+                .sort(pointSort());
             subscriber.next({ progress: 0, partitions, complete: false, palette, paletteMap: () => -1 });
             let targets: Palette = [];
             const kMeanCycle = () => {
@@ -41,7 +41,7 @@ export function weightedKMeans(partitions: number) {
                     .map(weightedAveragePixel);
                 palette = newPalette
                     .concat(generateRandomPoints({ "length": partitions - newPalette.length }))
-                    .sort(pointSort);
+                    .sort(pointSort());
 
                 const progress = targets
                     .filter((target, index) => target.toString() === palette[index].toString())

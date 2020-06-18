@@ -8,7 +8,7 @@ import { memoize } from "./memoize";
 
 export const kMeans = (population: RGB[], partitions: number) => {
     let palette = generateRandomPoints({ "length": partitions })
-        .sort(pointSort);
+        .sort(pointSort());
     let targets: RGB[];
     do {
         targets = palette;
@@ -25,7 +25,7 @@ export const kMeans = (population: RGB[], partitions: number) => {
             .map(averagePixel);
         palette = newPalette
             .concat(generateRandomPoints({ "length": partitions - newPalette.length }))
-            .sort(pointSort);
+            .sort(pointSort());
 
     } while (targets.toString() !== palette.toString());
     return targets;

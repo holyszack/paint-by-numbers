@@ -1,7 +1,7 @@
 import { RGB } from "../types/rgb";
 
-export function pointSort(first: RGB, second: RGB) {
-    return (first[0] - second[0])
-        || (first[2] - second[2])
-        || (first[1] - second[1]);
+export const pointSort = (indices = [0, 2, 1]) => (first: RGB, second: RGB) => {
+    return (first[indices[0]] - second[indices[0]])
+        || (first[indices[1]] - second[indices[1]])
+        || (first[indices[2]] - second[indices[2]]);
 };

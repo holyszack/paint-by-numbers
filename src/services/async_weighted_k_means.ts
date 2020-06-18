@@ -27,7 +27,7 @@ export function asyncWeightedKMeans(partitions: number) {
             const population = histogramToWeightedRgbs(histogram);
             console.log(population.length);
             let palette = generateRandomPoints({ "length": partitions })
-                .sort(pointSort);
+                .sort(pointSort());
             subscriber.next({ progress: 0, partitions, complete: false, palette });
             let targets: Palette = [];
             const populations = batchArray(batchSize)(population);
@@ -56,7 +56,7 @@ export function asyncWeightedKMeans(partitions: number) {
                         .map(weightedAveragePixel);
                     times.lap("otherPalette");
                     palette = otherPalette
-                        .sort(pointSort);
+                        .sort(pointSort());
                     times.lap("palette");
                     const progress = targets
                         .filter((target, index) => target.toString() === palette[index].toString())
