@@ -11,4 +11,3 @@ export function findClosestPixelId(pixels: RGB[]) {
             { "distance": 10000000, "value": -1 }
         ).value;
 };
-export default findClosestPixelId;

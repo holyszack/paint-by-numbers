@@ -2,7 +2,7 @@ import { pipe } from "rxjs";
 import { RGB } from "../types/rgb";
 import { roundValuesDown } from "./array/round_values_down";
 import { stringify } from "./array/stringify";
-import findClosestPixelId from "./find_closest_pixel_id";
+import { findClosestPixelId } from "./find_closest_pixel_id";
 import { indexMap } from "./index_map";
 import { rgbToHsv } from "./rgb_to_hsv";
 
