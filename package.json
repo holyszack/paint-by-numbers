@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
     "@types/pngjs": "^6.0.0",
-    "@types/react-dom": "^17.0.1",
+    "@types/react-dom": "^17.0.8",
     "gh-pages": "^3.1.0",
     "typescript": "^4.1.5"
   }
